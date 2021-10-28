@@ -1,0 +1,37 @@
+.bienvenida{
+	display: flex;
+	color: #fff;
+}
+
+ul{
+	list-style: none;
+	padding-left: 10px;
+	animation: cambiar 3s infinite;
+}
+
+ul, p{
+	margin: 0;
+}
+
+
+th{
+  white-space:nowrap;
+}
+
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) {
+
+        th{
+            font-size:xx-small;
+        }
+        #tablaProductos{
+            
+            white-space:nowrap;
+        }
+        h4{
+            font-size: large;   
+        }
+        
+     }

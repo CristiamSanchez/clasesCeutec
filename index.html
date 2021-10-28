@@ -1,15 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Tarea Infraestructura Web </title>
 </head>
-<body>
-    <div class="containe">
-        
 
+<body >
+<!-- onload="refrescar()" -->
+    <!-- Navbar de bootstrap -->
+    <nav class="navbar navbar-expand-md bg-info navbar-dark">
+        <a class="navbar-brand" onclick="continuar('1')">Instalacion y configuracion AWS </a>
+        <div class="bienvenida">
+            <ul>
+                <p>Tarea 1</p>
+                <li><span id="user"></span></li>
+            </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+            
+        </div>
+        
+    </nav><br>
+
+    <!-- Div principal -->
+    <div class="container col-12">
+        <div class="row">
+            <div class="col-2 bg-primary">
+            </div>
+            <div class="col-8">
+                <!-- Catalogar por productos -->
+                <div id="cardP" class="mb-4">
+                    <h1>Menu</h1> 
+                    <div class="row col-12">
+                        
+                        <a class="badge badge-warning badge-rounded mr-1 m-2" onclick="continuar('1')"><h6 class="text-center">Inicio</h6></a>
+                        <a class="badge badge-warning badge-rounded mr-1 m-2" onclick="continuar('2')"><h6 class="text-center"> Configuracion Instancia</h6></a>
+                        <a class="badge badge-warning badge-rounded mr-1 m-2" onclick="continuar('3')"><h6 class="text-center">Configuracion por consola</h6></a>
+                        <a class="badge badge-warning badge-rounded mr-1 m-2" onclick="continuar('4')"><h6 class="text-center">Habilitacion de Puertos</h6></a> 
+                    </div>
+                </div>
+
+                <!-- INICIO -->
+                <div class="card" id="card1">
+                    <div class="row">
+                    <div class="col-2">
+                    </div>
+                      <div class="col-8">
+                            <div class="thumbnail ml-5">
+                                    <a href="https://879870594096.signin.aws.amazon.com/console" target="_blank">
+                                        <img src="Imagenes/aws.png" class="img-fluid" alt="AWS" width="150" height="50"> 
+                                    </a> 
+                                    <div class="caption"> 
+                                    </div> 
+                                </div>
+                                 <p class="mb-4">Enlace para <a href="https://879870594096.signin.aws.amazon.com/console" target="_blank">crear</a> cuenta en Amazon Web Service<kbd>AWS</kbd> </p>
+                                <div class="thumbnail ml-5">
+                                    <a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html" target="_blank">
+                                        <img src="Imagenes/aws2.png" class="img-fluid" alt="AWS" width="150" height="50"> 
+                                    </a> 
+                                    <div class="caption"> 
+                                    </div> 
+                                </div>
+                                <p class="mb-4"><a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html" target="_blank">Documentacion</a> de Amazon para la instalacion de <kbd>Git</kbd> en Maquinas virtuales</p>
+
+                                <div class="thumbnail ml-5">
+                                    <a href="https://github.com/abkunal/Chat-App-using-Socket.io" target="_blank">
+                                        <img src="Imagenes/github.png" class="img-fluid" alt="GitHub" width="150" height="50"> 
+                                    </a> 
+                                    <div class="caption"> 
+                                    </div> 
+                                </div>
+                                <p class="mb-4">Enlace para <kbd>descargar</kbd> archivo a usar en prueba<a href="https://github.com/abkunal/Chat-App-using-Socket.io" target="_blank">(Chat)</a>
+                                </p>
+                        
+                        </div>
+                        <div class="col-2">
+                        </div>
+
+                     </div>
+                </div>
+
+                <!-- INSTALACION -->
+                <div class="card" id="card2" style="display: none;">
+                    <div class="row">
+                    <div class="col-2">
+                    </div>
+                      <div class="col-8">
+                          <p class="mb-4 text-left">Lo primero es registrarse e <kbd>ingresar</kbd> con sus credenciales para comenzar a experimentar con tus propias credenciales.</p>
+                            <img src="Imagenes/ConfiguracionInstance/Login.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Ahora debemos seleccionar en el buscador la opcion <kbd>EC2</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/EC2.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Ahora debemos dar clic en <kbd>Launch</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/Launch.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 1 debemos dar clic en <kbd>64-bit</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step1.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso2  debemos dar clic en <kbd>T2</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step2.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 3 debemos cambiar los valores indicados en la <kbd>imagen</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step3.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 4 se nos asignan 8 gigas de espacio y damos clic en <kbd>next</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step4.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 5 añadimos la etiqueta  <kbd>Name</kbd> y su respectivo valor.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step5.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 6 debemos asignar un grupo de <kbd>Seguridad</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step6.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 7 revisamos y continuamos dando clic en <kbd>Next</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step7.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Paso 7.1  seleccionamos proceder sin  <kbd>Llave</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step7_1.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Ahora debemos dar clic en el <kbd>Enlace</kbd> para continuar.</p>
+                            <img src="Imagenes/ConfiguracionInstance/step8.png" class="img-fluid rounded">
+                            <p class="m-4 text-left">Esperamos a que el estado diga Running y damos a  <kbd>Conectar</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionInstance/stepEnd.png" class="img-fluid rounded">
+                        </div>
+                        <div class="col-2">
+                        </div>
+
+                     </div>
+                </div>
+                <!-- FIN INSTALACION -->
+
+                 <!-- CONFIGURACION -->
+                <div class="card" id="card3" style="display: none;">
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-8">
+                             <p class="mb-4 text-left"> Instalamos Node con los siguientes pasos:  <kbd>sudo yum update</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/SudoYUMUPDATE.png" class="img-fluid rounded">
+                            <p>Luego confirmamos</p>
+                            <img src="Imagenes/ConfiguracionConsola/sudoYUMUPDATEY.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Instalamos el controlador de versiones NVM:  
+                            <kbd>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/nvmSH.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Instalar la ultima version de Node:  
+                            <kbd>. ~/.nvm/nvm.sh</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/nvmInstallNode.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Instalar la ultima version de Node:  
+                            <kbd>nvm install node</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/nvmInstallNode.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Comprobamos que este instalado correctamente:  
+                            <kbd>node -e "console.log('Running Node.js ' + process.version)"</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/nvmInstallNode.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Ahora instalaremos Git:  
+                            <kbd>sudo yum install git</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/sudoYumInstallGIT.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Clonaremos el codigo del proyecto Chat:  
+                            <kbd>git clone https://github.com/abkunal/Chat-App-using-Socket.io.git</kbd>
+                             Y despues ingresaremos a la carpeta que contiene el proyecto con: <kbd>cd Chat-App-using-Socket.io</kbd>.</p>
+                            <img src="Imagenes/ConfiguracionConsola/cdChat.png" class="img-fluid rounded">
+                            <p class="mb-4 text-left"> Se instalan las librerias Node:  
+                            <kbd>npm install</kbd></p>
+                            <p class="mb-4 text-left"> Y luego se instala las librerias PM2:  
+                            <kbd>npm install -g pm2</kbd></p>
+                            <img src="Imagenes/ConfiguracionConsola/npmInstallGPM2.png" class="img-fluid rounded">
+                             <p class="mb-4 text-left"> Ahora ejecutaremos el PM2:   
+                            <kbd>pm2 start app.js</kbd></p>
+                            <p class="mb-4 text-left"> y probaremos el PM2:   
+                            <kbd>curl 127.0.0.1:5000</kbd></p>
+                            <img src="Imagenes/ConfiguracionConsola/html.png" class="img-fluid rounded">
+                        </div>
+                        <div class="col-2">
+                        </div>
+
+                     </div>
+                </div>
+                <!-- FIN CONFIGURACION -->
+
+                 <!-- HABILITACION PUERTOS -->
+                <div class="card" id="card4">
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-8">
+                            <p class="mb-4 text-left"> Debemos obtener la IP publica desde nuestra Instancia:   
+                            <kbd>Dentro de Seguridad</kbd></p>
+                            <img src="Imagenes/IPPublic.png" class="img-fluid rounded">  
+                        </div>
+                        <div class="col-2">
+                        </div>
+
+                     </div>
+                </div>
+                <!-- FIN HABILITACION -->
+            </div>
+
+           <div class="col-2 bg-primary">
+           </div>
+            
+        </div>
     </div>
+
+
+
 </body>
+<!-- <script src="jquery/jquery-3.3.1.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script> 
+<script src="js/sweetalert.min.js"></script>
+
 </html>
