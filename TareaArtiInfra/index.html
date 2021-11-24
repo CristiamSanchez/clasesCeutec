@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Tarea Infra</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style2.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="bg-primary">
+            <div class="sidebar-header bg-dark">
+                <h3>Articulo VPC</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                
+                <li>
+                    <a href="#vpc">Crear VPC</a>
+                </li> 
+                <li>
+                    <a href="#subnets">Subnets: Publicas y Privadas</a>
+                </li>
+                <li>
+                    <a href="#igw">Crear Internet Gateway</a>
+                </li>
+                <li>
+                    <a href="#nat">Crear Nat Gateway</a>
+                </li>
+                <li>
+                    <a href="#rutas">Configurar Tabla de rutas</a>
+                </li>
+                <li>
+                    <a href="#asg">Crear AutoScaling Group</a>
+                </li> 
+                <li>
+                    <a href="#lb">Crear Load balancer</a>
+                </li> 
+               <li>
+                    <a href="#elimina">Eliminar todo</a>
+                </li>
+            </ul>
+
+          
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Mostrar menos</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                </div>
+            </nav>
+
+            <h2 id="vpc">Crear VPC</h2>
+            <p>VPC es una red privada, donde se puede ejecutar diferentes recursos como: Instancias, bases de datos etc.</p>
+            <p>Pasos para crear la VPC:</p>
+            <p>1. Iniciar sesion<br>
+               2. Ir a VPC Service<br>
+               3. Clic Create VPC<br>
+                3.1 Name Tag <br>
+                3.2 IPv4 CIDR block<br>
+                3.3 IPv6 CIDR block - Sin IPv6<br>
+                3.4 Tenancy por default<br>
+               4. Clic en Create VPC
+            </p>
+             <img src="Img/vpc.png" class="img-fluid rounded">
+            <div class="line"></div>
+
+            <h2 id="subnets">Subnets: Publicas y Privadas</h2>
+            <p>Las subredes publicas pueden ser accedidas mediante una puerta de enlace IGW(Internet GateWay).</p>
+            <p>Las subredes privadas pueden ser enrutadas mediante NAT(network address translation).</p>
+            <p>Pasos para crear subredes:</p>
+            <p> 1. Seleccionar subred <br>
+                2. Clic en crear subred <br>
+                3. ID de VPC: seleccione la VPC que creó anteriormente. <br>
+                4. Configuración de subred: haga clic en Agregar nueva subred tres veces para crear cuatro nuevas formas de subred.<br>
+                5. Subred 1 de 4: ingrese los siguientes detalles:<br>
+                5.1 Nombre de subred: ingrese public-subnet-1<br>
+                5.2 Zona de disponibilidad: seleccione la primera opción <br>
+                5.3 Ingrese un bloque CIDR para cada subred que se ajuste a su bloque CIDR VPC (por ejemplo, 10.0.0.0/24)<br>
+                6. Subred 2 de 4: ingrese los siguientes detalles:<br>
+                6.1 Nombre de subred: ingrese public-subnet-2<br>
+                6.2 Zona de disponibilidad: seleccione la segunda opción . Debe estar en una zona de disponibilidad diferente a public-subnet-1.<br>
+                6.3 Ingrese un bloque de CIDR para cada subred que se ajuste a su bloque de CIDR de VPC (por ejemplo, 10.0.1.0/24)<br>
+                7. Subred 3 de 4: ingrese los siguientes detalles:<br>
+                7.1 Nombre de subred: ingrese private-subnet-1<br>
+                7.2 Zona de disponibilidad: seleccione la primera opción<br>
+                7.3 Ingrese un bloque de CIDR para cada subred que se ajuste a su bloque de CIDR de VPC (por ejemplo, 10.0.2.0/24)<br>
+                8. Subred 4 de 4: ingrese los siguientes detalles:<br>
+                8.1 Nombre de subred: ingrese private-subnet-2<br>
+                8.2 Zona de disponibilidad: seleccione la segunda opción . Debe estar en una zona de disponibilidad diferente a la subred privada 1.<br>
+                8.3 Ingrese un bloque de CIDR para cada subred que se ajuste a su bloque de CIDR de VPC (por ejemplo, 10.0.3.0/24)</p>
+            <img src="Img/subnets.png" class="img-fluid rounded">
+            <img src="Img/subnets2.png" class="img-fluid rounded">
+            <div class="line"></div>
+
+            <h2 id="igw">Crear Internet Gateway</h2>
+            <p>El Internet Gateway se usa para dar acceso a Internet a las instancias dentro de una VPC </p>
+            <p>Para configurar IGW hagamos los siguientes pasos:</p>
+            <p>1. Seleccione Puertas de enlace de Internet en el menú de la izquierda.
+               2. Haga clic en Crear puerta de enlace de Internet e ingrese los siguientes detalles:
+                2.1 Etiqueta de nombre: introduzca un nombre para la puerta de enlace de Internet (por ejemplo, my-internet-gateway).
+               3. Haga clic en Crear puerta de enlace de Internet.
+               4. Seleccione Acciones -> Adjuntar a VPC.
+               5. Seleccione la VPC que creó anteriormente y haga clic en Adjuntar puerta de enlace de Internet.</p>
+
+            <img src="Img/IGW.png" class="img-fluid rounded"> 
+            <img src="Img/attachIGW1.png" class="img-fluid rounded"> 
+            <img src="Img/attachIGW.png" class="img-fluid rounded"> 
+            <div class="line"></div>
+
+            <h2 id="nat">Crear NAT Gateway</h2>
+            <p>NAT sirve para dar acceso a Internet saliente a los recursos de Instancias en subredes privadas.</p>
+            <p>Para crear un NAT sigamos los siguientes pasos:<br>
+                1. Seleccione Puertas de enlace NAT en el menú de la izquierda.<br>
+                2. Haga clic en Crear puerta de enlace NAT e ingrese los siguientes detalles:<br>
+                3. Nombre: ingrese un nombre para la puerta de enlace NAT (por ejemplo, my-nat-gateway).<br>
+                4. Subred: seleccione la subred con el nombre public-subnet-1.<br>
+                5. ID de asignación de IP elástica: haga clic en Asignar IP elástica para crear una nueva IP elástica para la puerta de enlace NAT.<br>
+                6. Haga clic en Crear puerta de enlace NAT.</p> 
+            <img src="Img/nat0.png" class="img-fluid rounded"> 
+            <img src="Img/nat1.png" class="img-fluid rounded"> 
+            <div class="line"></div>
+
+
+
+            <h2>Configurar Tabla de rutas</h2>
+            <p>Se utilizan para administrar el trafico de red</p>
+            <p>Configurar una tabla de enrutamiento:<br>
+                1. Seleccione Tablas de ruta en el menú de la izquierda.<br>
+                2. Seleccione la tabla de enrutamiento principal para la VPC que creó anteriormente.<br>
+                3. Pase el mouse sobre la columna Nombre de la tabla de ruta seleccionada, luego haga clic en el icono de edición e ingrese el nombre tabla de ruta principal.<br>
+                4. Haga clic en la pestaña Rutas a continuación y haga clic en Editar rutas.<br>
+                5. Haga clic en Agregar ruta e ingrese los siguientes detalles:<br>
+                    5.1  Destino: ingrese 0.0.0.0/0 para que coincida con todo el tráfico no local.<br>
+                    5.2  Destino: seleccione Puerta de enlace NAT y luego seleccione la puerta de enlace NAT que creó anteriormente.<br>
+                8. Haz clic en Guardar rutas.
+            </p>
+            <img src="Img/rutas.png" class="img-fluid rounded"> 
+            <div class="line"></div>
+            <h4 id="rutas">Configurar Tabla de enrutamiento para subredes publicas</h4>
+            <p>Se debe de crear una nueva tabla de enrutamiento y se debe de seleccionar la VPC creada anteriormente, 
+                Luego se debe de seleccionar la opcion de Internet GateWay y seleccionar la creada.
+                Despues de esto, podemos asociar las sub redes creadas a la nueva ruta.
+            </p>
+            <img src="Img/rt1.png" class="img-fluid rounded"> 
+            <img src="Img/rt2.png" class="img-fluid rounded"> 
+            <img src="Img/rt3.png" class="img-fluid rounded"> 
+            <img src="Img/rt4.png" class="img-fluid rounded"> 
+            <div class="line"></div>
+
+
+            <h2 id="asg">Crear AutoScaling group</h2> 
+            <p>Para crear un Auto Scaling group sigamos los siguientes pasos:<br>
+                1. Seleccione Auto Scaling Group  abajo en el menú de la izquierda.<br>
+                2. Haga clic en create Auto Scaling<br>
+                3. Usamos una etiqued Name y le damos su respectivo nombre y luego una descripcion.<br>
+                4. Seleccionamos en AMI la opcion Linux 2.<br>
+                5. En el tipo de instancia: T2.Micro .<br>
+                6. Por el tipo de ejemplo no seleccionamos un grupo de seguridad.<br>
+                7. En Resource tag la etiqueda Name, un valor y agregamos la opcion <kbd>volumes</kbd> <br>
+                8. En detalles avanzados seleccionamos: <kbd>List_S3</kbd> <br>
+                9. En user data pegamos el script que deseamos corra al crearse las instancias(lo pegare abajo):<br>
+                10. Volemos a la pantalla anterior y refrescamos la opcion de template, y seleccionamos la creada<br>
+                11. Seleccionamos las zonas de disponibilidad<br>
+                12. No elegimos load balancer(despues lo haremos)<br>
+                12. Seleccionamos la configuracion en cantidad de maquinas que deseamos utilizar y luego añadimos una etiqueta y damos clic en crear. <br>
+                 <kbd>
+                    #!/bin/bash <br>
+                    sudo yum update -y<br>
+                    sudo yum install git -y<br>
+                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash<br>
+                    #https://stackoverflow.com/questions/54415841/<br>nodejs-not-installed-successfully-in-aws-ec2-inside-user-data<br>
+                    export NVM_DIR="$HOME/.nvm"<br>
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"<br>
+                    nvm install 7<br>
+                    nvm install node -y<br>
+                    node -e "console.log('Running Node.js ' + process.version)"<br>
+                    #mkdir /tmp/proyecto #Comando para crear carpetas<br>
+                    cd<br>
+                    git clone https://github.com/abkunal/Chat-App-using-Socket.io.git<br>
+                    cd /Chat-App-using-Socket.io<br>
+                    pwd<br>
+                    npm install<br>
+                    npm install -g pm2<br>
+                    pm2 start app.js<br>
+                    
+                    sudo amazon-linux-extras list | grep nginx<br>
+                    sudo amazon-linux-extras enable nginx1<br>
+                    sudo yum clean metadata<br>
+                    sudo yum -y install nginx<br>
+                    nginx -v<br>
+                    cd /etc/nginx<br>
+                    sudo aws s3 cp s3://nginx-ceutec-infra/nginx.conf nginx.conf<br>
+                    sudo service nginx restart<br>
+                </kbd> <br></p> 
+            <img src="Img/as1.png" class="img-fluid rounded"> 
+            <img src="Img/as2.png" class="img-fluid rounded"> 
+            <img src="Img/as3.png" class="img-fluid rounded"> 
+            <img src="Img/as4.png" class="img-fluid rounded"> 
+            <img src="Img/as5.png" class="img-fluid rounded"> 
+            <img src="Img/as6.png" class="img-fluid rounded"> 
+            <img src="Img/as7.png" class="img-fluid rounded"> 
+            <img src="Img/as8.png" class="img-fluid rounded"> 
+            <img src="Img/as9.png" class="img-fluid rounded"> 
+            <img src="Img/as10.png" class="img-fluid rounded"> 
+            <img src="Img/as11.png" class="img-fluid rounded"> 
+            <img src="Img/as12.png" class="img-fluid rounded"> 
+            <img src="Img/as13.png" class="img-fluid rounded"> 
+            <img src="Img/as14.png" class="img-fluid rounded"> 
+            <img src="Img/as15.png" class="img-fluid rounded"> 
+            
+            <div class="line"></div>
+
+            <h2 id="lb">Crear Load Balancer</h2>
+            
+             <img src="Img/lb1.png" class="img-fluid rounded">
+             <img src="Img/lb2.png" class="img-fluid rounded">
+             <img src="Img/lb3.png" class="img-fluid rounded">
+             <img src="Img/lb4.png" class="img-fluid rounded">
+            <div class="line"></div>
+
+            <h2 id="lb">Ahora revisamos que este todo funcionando:</h2>
+            <img src="Img/fin.png" class="img-fluid rounded">
+             <div class="line"></div>
+
+            <h2 id="elimina">Eliminar todo</h2>
+            <p> <code>Eliminar puerta de enlace NAT</code><br>
+                1. Vaya a la sección Servicio de VPC y seleccione Puertas de enlace NAT en el menú de la izquierda.<br>
+                2. Seleccione la puerta de enlace NAT creada anteriormente (my-nat-gateway) y haga clic en Acciones y Eliminar puerta de enlace NAT.<br>
+                3. Ingrese eliminar en el campo de texto de confirmación y haga clic en Eliminar.<br>
+                <code>Liberar IP elástica</code><br>
+                1. Una vez eliminada la puerta de enlace NAT, seleccione Direcciones IP elásticas en el menú de la izquierda.<br>
+                2. Seleccione la dirección IP que se asignó a la puerta de enlace NAT, haga clic en Acciones y Liberar dirección IP elástica.<br>
+                <code>Eliminar VPC</code><br>
+                1. Seleccione Sus VPC en el menú de la izquierda.<br>
+                2. Seleccione la VPC que creó al comienzo del tutorial (my-vpc) y haga clic en Acciones y Eliminar VPC.<br>
+                3. Ingrese eliminar en el campo de texto de confirmación y haga clic en Eliminar.<br>
+            </p>
+            <img src="Img/delete1.png" class="img-fluid rounded">
+           
+        </div>
+    </div>
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+
+</html>
