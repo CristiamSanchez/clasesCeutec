@@ -19,7 +19,7 @@ const server = http.createServer(app);
 const port = 3000;
 server.listen(port);
 
-console.debug("Server listening on port " + port);  
+console.debug("Server Escuchando el puerto " + port);  
 
 /* 
 var http = require('http'); 
