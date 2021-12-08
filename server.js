@@ -22,7 +22,7 @@ server.listen(port);
 console.debug("Server Escuchando el puerto " + port);  
 
 /* 
-//cambios en installation de nodemon y express en nueva carpeta
+//cambios en installation de nodemon y express en nueva carpeta para subir completo
 var http = require('http'); 
 var url = require('url');
 const express = require("express");
